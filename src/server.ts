@@ -1,14 +1,14 @@
 import express, { Response, Request } from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import envVars from './config';
+import {PORT} from './config'
 import usersRouter from './routes/users';
 import productsRouter from './routes/products';
 import ordersRouter from './routes/orders';
 
 
 const app = express();
-const PORT = envVars.PORT;
+const port = PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,5 +22,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`);
+    console.log(`server is running on port ${port}`);
 });
