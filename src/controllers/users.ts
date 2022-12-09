@@ -34,6 +34,18 @@ export const createUser = async (req: Request, res: Response) => {
         throw new Error(`can not create the user ==> ${error}`);
     }
 };
+/* --------------------------------------------------------- signIN --------------------------------------------------- */
+export const signIN = async (req: Request, res: Response) => {
+    try {
+        const firstName = req.body.firstName as string ;
+        const lastName = req.body.lastName as string ;
+        const password = req.body.password as string ;
+        const userChecked = await User.signIn(firstName,lastName,password);
+        res.json(userChecked);
+    } catch (error) {
+        throw new Error(`not valid ==> ${error}`);
+    }
+}
 
 /* --------------------------------------------------------- delete user --------------------------------------------------- */
 export const deleteUser = async (req: Request, res: Response) => {

@@ -7,6 +7,8 @@ const {
     DB_SERVER_USER,
     DB_SERVER_PASSWORD,
     DB_SERVER_PORT,
+    PEPPER,
+    SALT
 } = process.env;
 
 export {
@@ -16,4 +18,6 @@ export {
     DB_SERVER_USER,
     DB_SERVER_PASSWORD,
     DB_SERVER_PORT,
+    PEPPER,
+    SALT
 };

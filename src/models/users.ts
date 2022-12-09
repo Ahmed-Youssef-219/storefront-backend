@@ -1,6 +1,8 @@
 /* -------------------> create user schema <-------------------- */
 import { User } from '../types/types';
 import dbServer from '../database';
+import bcrypt from 'bcrypt';
+import { PEPPER,SALT } from '../config';
 
 export default class UserSchema {
     /* -------------------------------------------- get all users -------------------------------------------- */
@@ -34,15 +36,38 @@ export default class UserSchema {
         try {
             const connection = await dbServer.connect();
             const sql = `INSERT INTO users (firstname, lastname, password) VALUES ($1,$2,$3) RETURNING *`;
+            const hashedPassword = bcrypt.hashSync(user.password+PEPPER, parseInt(SALT as string));
             const result = await connection.query(sql, [
                 user.firstName ,
                 user.lastName ,
-                user.password ,
+                hashedPassword,
             ]);
             connection.release();
             return result.rows[0];
         } catch (error) {
             throw new Error(`can not create the user ==> ${error}`);
+        }
+    }
+
+    /* -------------------------------------------- signIN -------------------------------------------- */
+    async signIn(firstName:string, lastName:string, password:string): Promise<User | null> {
+        try {
+            const connection = await dbServer.connect();
+            const sql = `SELECT password FROM users WHERE firstname=$1 AND lastname=$2`;
+            const result = await connection.query(sql,[firstName,lastName]);
+            connection.release();
+            if(result.rows.length){
+                const hashedPassword = result.rows[0].password ;
+                const isPasswordValidate = bcrypt.compareSync(password+PEPPER,hashedPassword) ;
+                if(isPasswordValidate){
+                    return result.rows[0];
+                }
+            }
+            
+            return null ;
+
+        } catch (error) {
+            throw new Error(`not valid ==> ${error}`);
         }
     }
 
