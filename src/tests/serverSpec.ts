@@ -1,4 +1,4 @@
-let x: number = 25;
+const x = 25;
 
 describe('the first test in the project :)', () => {
     it('varible x must be equal to 25', () => {

@@ -1,0 +1,43 @@
+/* Replace with your SQL commands */
+DROP TABLE users;
+
+/* Replace with your SQL commands */
+CREATE TABLE users (
+    id  SERIAL PRIMARY KEY ,
+    firstName VARCHAR(100) NOT NULL ,
+    lastName VARCHAR(100) NOT NULL ,
+    password VARCHAR(150) NOT NULL ,
+);
+
+
+/* Replace with your SQL commands */
+DROP TABLE orders;
+
+/* Replace with your SQL commands */
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    status VARCHAR(15),
+    user_id bigint REFERENCES users(id)
+);
+
+
+
+DROP TABLE products;
+/* Replace with your SQL commands */
+CREATE TABLE products (
+    id  SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL ,
+    price INTEGER NOT NULL ,
+);
+
+
+/* Replace with your SQL commands */
+DROP TABLE ordre-products;
+
+/* Replace with your SQL commands */
+CREATE TABLE order_products (
+    id SERIAL PRIMARY KEY,
+    quantity INTEGER,
+    order_id bigint REFERENCES orders(id),
+    product_id bigint REFERENCES products(id)
+);
