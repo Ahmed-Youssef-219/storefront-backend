@@ -7,7 +7,7 @@ export default class UserSchema {
     async index(): Promise<User[]> {
         try {
             const connection = await dbServer.connect();
-            const sql = `SELECT * FROM "users"`;
+            const sql = `SELECT * FROM users`;
             const result = await connection.query(sql);
             connection.release();
             return result.rows;

@@ -13,7 +13,7 @@ export const getAlUsers = async (req: Request, res: Response) => {
     }
 };
 
-/* --------------------------------------------------------- get all users --------------------------------------------------- */
+/* --------------------------------------------------------- get one user --------------------------------------------------- */
 export const getOneUser = async (req: Request, res: Response) => {
     try {
         const id = req.params.id as unknown as number;

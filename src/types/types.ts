@@ -11,7 +11,7 @@ export type Product = {
     price: string;
 };
 
-export type Orders = {
+export type Order = {
     id: number;
     status: string;
     user_id: number;
