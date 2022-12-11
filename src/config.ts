@@ -8,7 +8,8 @@ const {
     DB_SERVER_PASSWORD,
     DB_SERVER_PORT,
     PEPPER,
-    SALT
+    SALT,
+    TOKEN_SECRET,
 } = process.env;
 
 export {
@@ -19,5 +20,6 @@ export {
     DB_SERVER_PASSWORD,
     DB_SERVER_PORT,
     PEPPER,
-    SALT
+    SALT,
+    TOKEN_SECRET,
 };

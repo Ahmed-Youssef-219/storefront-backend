@@ -4,7 +4,7 @@ import {
     DB_NAME,
     DB_SERVER_USER,
     DB_SERVER_PASSWORD,
-    DB_SERVER_PORT
+    DB_SERVER_PORT,
 } from './config';
 
 const dbServer = new Pool({

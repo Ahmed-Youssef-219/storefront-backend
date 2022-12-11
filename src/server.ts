@@ -20,9 +20,11 @@ app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, world :)');
+    res.status(200).send('Hello, world :)');
 });
 
 app.listen(PORT, () => {
     console.log(`server is running on port ${port}`);
 });
+
+export default app;
