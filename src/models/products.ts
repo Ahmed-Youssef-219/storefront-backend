@@ -1,5 +1,5 @@
 import { Product } from '../types/types';
-import dbServer from '../database';
+import {dbServer} from '../database';
 
 export default class ProductSchema {
     /* -------------------------------------------- get all products -------------------------------------------- */

@@ -1,9 +1,9 @@
 import { Order, Order_products } from '../types/types';
-import dbServer from '../database';
+import {dbServer} from '../database';
 
 export default class OrderSchema {
     /* -------------------------------------------- get current orders by users -------------------------------------------- */
-    async show(userId: number): Promise<Order[]> {
+    async index(userId: number): Promise<Order[]> {
         try {
             const connection = await dbServer.connect();
             const sql = `SELECT * FROM orders WHERE user_id=$1`;

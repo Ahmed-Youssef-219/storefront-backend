@@ -6,7 +6,7 @@ const OrderSc = new OrderSchema();
 export const getAllOrders = async (req: Request, res: Response) => {
     try {
         const userId = req.body.userId as unknown as number;
-        const orders = await OrderSc.show(userId);
+        const orders = await OrderSc.index(userId);
         res.json(orders);
     } catch (error) {
         throw new Error(

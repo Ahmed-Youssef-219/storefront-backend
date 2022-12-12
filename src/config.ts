@@ -10,6 +10,8 @@ const {
     PEPPER,
     SALT,
     TOKEN_SECRET,
+    ENV,
+    DB_NAME_TEST
 } = process.env;
 
 export {
@@ -22,4 +24,6 @@ export {
     PEPPER,
     SALT,
     TOKEN_SECRET,
+    ENV,
+    DB_NAME_TEST
 };

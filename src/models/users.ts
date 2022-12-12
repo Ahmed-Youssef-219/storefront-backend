@@ -1,6 +1,6 @@
 /* -------------------> create user schema <-------------------- */
 import { User } from '../types/types';
-import dbServer from '../database';
+import {dbServer} from '../database';
 import bcrypt from 'bcrypt';
 import { PEPPER, SALT } from '../config';
 
