@@ -1,3 +1,51 @@
+==>Database schema :- 
+
+    --> users table
+
+        |    column      |     type                      |     nullable       
+        |----------------|-------------------------------|---------------------- 
+        |     id         |     integer                   |     not null        -->primary key
+        |     firstname  |     character varying(100)    |     not null      
+        |     lastname   |     character varying(100)    |     not null        
+        |     password   |     character varying(100)    |     not null 
+        |----------------|-------------------------------|-----------------------  
+
+
+    --> products table
+
+        |    column      |     type                      |     nullable       
+        |----------------|-------------------------------|---------------------- 
+        |     id         |     integer                   |     not null       -->primary key 
+        |     name       |     character varying(100)    |     not null      
+        |     price      |     integer                   |     not null        
+        |----------------|-------------------------------|-----------------------
+
+
+    --> orders table
+
+        |    column      |     type                      |     nullable       
+        |----------------|-------------------------------|---------------------- 
+        |     id         |     integer                   |     not null       -->primary key 
+        |     status     |     character varying(15)     |     not null      
+        |     user_id    |     integer                   |     not null       -->foreign key 
+        |----------------|-------------------------------|-----------------------
+
+
+    --> order_products table
+
+        |    column       |     type                      |     nullable       
+        |-----------------|-------------------------------|---------------------- 
+        |     id          |     integer                   |     not null       -->primary key 
+        |     quantity    |     integer                   |     not null      
+        |     order_id    |     integer                   |     not null       -->foreign key 
+        |     product_id  |     integer                   |     not null       -->foreign key 
+        |-----------------|-------------------------------|-----------------------
+             
+
+
+
+
+
 
 ==> API endpoints :-
 
