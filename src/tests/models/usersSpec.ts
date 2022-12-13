@@ -23,12 +23,12 @@ describe('Test users model functions', () => {
 
     it('expect create method to add a user to DB', async () => {
         const fakeUser:User = {
-            firstname:'Ahmed',
+            firstname:'mohamed',
             lastname:'Youssef',
             password:'2192000'
         }
         const result= await userSc.create(fakeUser);
-        expect(result.firstname).toEqual('Ahmed');
+        expect(result.firstname).toEqual('mohamed');
         expect(result.lastname).toEqual('Youssef');
         expect(result.id).toEqual(2);
     });

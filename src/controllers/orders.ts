@@ -6,9 +6,9 @@ const OrderSc = new OrderSchema();
 /* --------------------------------------------------------- get current orders by user --------------------------------------- */
 export const getAllOrders = async (req: Request, res: Response) => {
     try {
-        const userId = req.body.userId as unknown as number;
-        const orders = await OrderSc.index(userId);
-        res.json(orders);
+        const user_id = req.body.user_id as unknown as number;
+        const orders = await OrderSc.index(user_id);
+        res.json({orders});
     } catch (error) {
         throw new Error(
             `can not get the orders (from the controllers) ==> ${error}`
@@ -21,7 +21,7 @@ export const createOrder = async (req: Request, res: Response) => {
     try {
         const orderObj:Order = req.body;
         const createdOrder = await OrderSc.create(orderObj);
-        res.json({ createdOrder });
+        res.status(201).json({ createdOrder });
     } catch (error) {
         throw new Error(
             `can not create the order (from the controllers) ==> ${error}`
@@ -46,14 +46,14 @@ export const deleteOrder = async (req: Request, res: Response) => {
 export const addProducts = async (req: Request, res: Response) => {
     try {
         const quantity = req.body.quantity;
-        const productId = req.body.productId as unknown as number;
-        const orderId = req.params.orderId as unknown as number;
+        const product_id = req.body.product_id as unknown as number;
+        const order_id = req.params.orderId as unknown as number;
         const order_products = await OrderSc.addProducts(
             quantity,
-            orderId,
-            productId
+            order_id,
+            product_id
         );
-        res.json(order_products);
+        res.status(200).json({order_products});
     } catch (error) {
         throw new Error(
             `can not add products to the order (from controllers) ==> ${error}`
