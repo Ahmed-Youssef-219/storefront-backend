@@ -11,7 +11,7 @@ const {
     SALT,
     TOKEN_SECRET,
     NODE_ENV,
-    DB_NAME_TEST
+    DB_NAME_TEST,
 } = process.env;
 
 export default {
@@ -24,5 +24,5 @@ export default {
     SALT,
     TOKEN_SECRET,
     NODE_ENV,
-    DB_NAME: NODE_ENV == "dev" ? DB_NAME_DEV : DB_NAME_TEST
+    DB_NAME: NODE_ENV == 'dev' ? DB_NAME_DEV : DB_NAME_TEST,
 };

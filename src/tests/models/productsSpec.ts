@@ -17,13 +17,12 @@ describe('Test products model functions definitions', () => {
         expect(ProductSc.delete).toBeDefined();
     });
 
-
     it('expect create method to add a product to DB', async () => {
-        const fakeProduct:Product = {
-            name:'Keyboard',
-            price:25
-        }
-        const result= await ProductSc.create(fakeProduct);
+        const fakeProduct: Product = {
+            name: 'Keyboard',
+            price: 25,
+        };
+        const result = await ProductSc.create(fakeProduct);
         expect(result.name).toEqual('Keyboard');
         expect(result.price).toEqual(25);
         expect(result.id).toEqual(1);
@@ -35,7 +34,7 @@ describe('Test products model functions definitions', () => {
     it('expect show method to get one product from DB', async () => {
         const result = await ProductSc.show(1);
         expect(result.id).toEqual(1);
-        expect(result.name).toEqual("Keyboard");
+        expect(result.name).toEqual('Keyboard');
         expect(result.price).toEqual(25);
     });
 });

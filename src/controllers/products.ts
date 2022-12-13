@@ -6,7 +6,7 @@ const Product = new ProductSchema();
 export const getAllProducts = async (req: Request, res: Response) => {
     try {
         const products = await Product.index();
-        res.status(200).json({products});
+        res.status(200).json({ products });
     } catch (error) {
         throw new Error(
             `can not get the products (from the controllers) ==> ${error}`
@@ -18,7 +18,7 @@ export const getOneProduct = async (req: Request, res: Response) => {
     try {
         const id = req.params.id as unknown as number;
         const product = await Product.show(id);
-        res.status(200).json({product});
+        res.status(200).json({ product });
     } catch (error) {
         throw new Error(
             `can not get the product (from the controllers) ==> ${error}`

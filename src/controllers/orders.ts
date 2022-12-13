@@ -8,7 +8,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
     try {
         const user_id = req.body.user_id as unknown as number;
         const orders = await OrderSc.index(user_id);
-        res.json({orders});
+        res.json({ orders });
     } catch (error) {
         throw new Error(
             `can not get the orders (from the controllers) ==> ${error}`
@@ -19,7 +19,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
 /* --------------------------------------------------------- create an order --------------------------------------------------- */
 export const createOrder = async (req: Request, res: Response) => {
     try {
-        const orderObj:Order = req.body;
+        const orderObj: Order = req.body;
         const createdOrder = await OrderSc.create(orderObj);
         res.status(201).json({ createdOrder });
     } catch (error) {
@@ -53,7 +53,7 @@ export const addProducts = async (req: Request, res: Response) => {
             order_id,
             product_id
         );
-        res.status(200).json({order_products});
+        res.status(200).json({ order_products });
     } catch (error) {
         throw new Error(
             `can not add products to the order (from controllers) ==> ${error}`

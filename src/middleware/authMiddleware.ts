@@ -5,7 +5,10 @@ import vars from '../config';
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const bearer_token = req.headers.authorization;
     const token = bearer_token?.split(' ')[1];
-    const decodedData = jwt.verify(token as string, vars.TOKEN_SECRET as string);
+    const decodedData = jwt.verify(
+        token as string,
+        vars.TOKEN_SECRET as string
+    );
     if (decodedData) {
         next();
     } else {

@@ -17,7 +17,6 @@ export default class UserSchema {
             throw new Error(`can not get the users ==> ${error}`);
         }
     }
-    
 
     /* -------------------------------------------- get one user -------------------------------------------- */
     async show(id: number): Promise<User> {

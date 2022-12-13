@@ -32,7 +32,7 @@ export default class OrderSchema {
             );
         }
     }
-    
+
     /* -------------------------------------------- delete an order -------------------------------------------- */
     async delete(id: number): Promise<Order> {
         try {

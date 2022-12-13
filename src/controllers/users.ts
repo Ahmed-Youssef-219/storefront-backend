@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import UserSchema from '../models/users';
 import jwt from 'jsonwebtoken';
-import  Vars  from '../config';
+import Vars from '../config';
 const User = new UserSchema();
 
 /* --------------------------------------------------------- get all users --------------------------------------------------- */
 export const getAlUsers = async (req: Request, res: Response) => {
     try {
         const users = await User.index();
-        res.status(200).json({users});
+        res.status(200).json({ users });
     } catch (error) {
         throw new Error(`can not get the users ==> ${error}`);
     }
@@ -30,7 +30,10 @@ export const createUser = async (req: Request, res: Response) => {
     try {
         const user = req.body;
         const createdUser = await User.create(user);
-        const token = jwt.sign({ user: createUser }, Vars.TOKEN_SECRET as string);
+        const token = jwt.sign(
+            { user: createUser },
+            Vars.TOKEN_SECRET as string
+        );
         return res.json({ createdUser, token });
     } catch (error) {
         throw new Error(`can not create the user ==> ${error}`);

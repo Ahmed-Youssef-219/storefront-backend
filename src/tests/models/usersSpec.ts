@@ -3,7 +3,6 @@ import { User } from '../../types/types';
 
 const userSc = new UserSchema();
 
-
 describe('Test users model functions', () => {
     it('expect users model to have function called index', () => {
         expect(userSc.index).toBeDefined();
@@ -22,12 +21,12 @@ describe('Test users model functions', () => {
     });
 
     it('expect create method to add a user to DB', async () => {
-        const fakeUser:User = {
-            firstname:'mohamed',
-            lastname:'Youssef',
-            password:'2192000'
-        }
-        const result= await userSc.create(fakeUser);
+        const fakeUser: User = {
+            firstname: 'mohamed',
+            lastname: 'Youssef',
+            password: '2192000',
+        };
+        const result = await userSc.create(fakeUser);
         expect(result.firstname).toEqual('mohamed');
         expect(result.lastname).toEqual('Youssef');
         expect(result.id).toEqual(2);
@@ -39,7 +38,7 @@ describe('Test users model functions', () => {
     it('expect show method to get one user from DB', async () => {
         const result = await userSc.show(1);
         expect(result.id).toEqual(1);
-        expect(result.firstname).toEqual("Ahmed");
-        expect(result.lastname).toEqual("Youssef");
+        expect(result.firstname).toEqual('Ahmed');
+        expect(result.lastname).toEqual('Youssef');
     });
 });

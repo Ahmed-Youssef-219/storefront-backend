@@ -9,17 +9,15 @@
     "lint": "eslint \"src/**/*.ts\"",
     "jasmine": "jasmine",
     "jasmine-ts": "jasmine-ts",
-    "test": "npm run build && npm run jasmine",
-    "test_1": "npm run jasmine-ts",
     "createDB_test": "db-migrate db:create commerce_test",
     "deleteDB_test": "db-migrate db:drop commerce_test",
     "createDB": "db-migrate db:create e-commerce",
     "deleteDB": "db-migrate db:drop e-commerce",
-    "realTest": "npm run createDB_test&&set NODE_ENV=test&&db-migrate up:all -e test&&jasmine-ts &&set NODE_ENV=dev&&npm run deleteDB_test",
-    "finalTest": "set NODE_ENV=test&&db-migrate up --config database.json -e test&& jasmine-ts && db-migrate down",
+    "dbMigrateup": "db-migrate up:all",
+    "dbMigratedown": "db-migrate reset",
+    "test": "npm run createDB_test&&set NODE_ENV=test&&db-migrate up:all -e test&&jasmine-ts &&set NODE_ENV=dev&&npm run deleteDB_test",
     "start": "npm run build && node build/server",
-    "nodemon": "nodemon src/server.ts",
-    "dev-server": "tsc-watch --noClear -p tsconfig.json --onSuccess \"node ./build/server.js\""
+    "nodemon": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",
