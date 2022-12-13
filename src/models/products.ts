@@ -1,5 +1,5 @@
 import { Product } from '../types/types';
-import {dbServer} from '../database';
+import dbServer from '../database';
 
 export default class ProductSchema {
     /* -------------------------------------------- get all products -------------------------------------------- */
@@ -9,7 +9,6 @@ export default class ProductSchema {
             const sql = `SELECT * FROM products`;
             const result = await connection.query(sql);
             connection.release();
-            console.log(result);
             return result.rows;
         } catch (error) {
             throw new Error(`can not get the products ==> ${error}`);

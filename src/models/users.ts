@@ -1,8 +1,8 @@
 /* -------------------> create user schema <-------------------- */
 import { User } from '../types/types';
-import {dbServer} from '../database';
+import dbServer from '../database';
 import bcrypt from 'bcrypt';
-import { PEPPER, SALT } from '../config';
+import vars from '../config';
 
 export default class UserSchema {
     /* -------------------------------------------- get all users -------------------------------------------- */
@@ -17,6 +17,7 @@ export default class UserSchema {
             throw new Error(`can not get the users ==> ${error}`);
         }
     }
+    
 
     /* -------------------------------------------- get one user -------------------------------------------- */
     async show(id: number): Promise<User> {
@@ -37,12 +38,12 @@ export default class UserSchema {
             const connection = await dbServer.connect();
             const sql = `INSERT INTO users (firstname, lastname, password) VALUES ($1,$2,$3) RETURNING *`;
             const hashedPassword = bcrypt.hashSync(
-                user.password + PEPPER,
-                parseInt(SALT as string)
+                user.password + vars.PEPPER,
+                parseInt(vars.SALT as string)
             );
             const result = await connection.query(sql, [
-                user.firstName,
-                user.lastName,
+                user.firstname,
+                user.lastname,
                 hashedPassword,
             ]);
             connection.release();
@@ -66,7 +67,7 @@ export default class UserSchema {
             if (result.rows.length) {
                 const hashedPassword = result.rows[0].password;
                 const isPasswordValidate = bcrypt.compareSync(
-                    password + PEPPER,
+                    password + vars.PEPPER,
                     hashedPassword
                 );
                 if (isPasswordValidate) {

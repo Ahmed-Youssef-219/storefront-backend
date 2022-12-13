@@ -1,24 +1,24 @@
 export type User = {
-    id: number;
-    firstName: string;
-    lastName: string;
+    id?: number;
+    firstname: string;
+    lastname: string;
     password: string;
 };
 
 export type Product = {
-    id: number;
+    id?: number;
     name: string;
-    price: string;
+    price: number;
 };
 
 export type Order = {
-    id: number;
+    id?: number;
     status: string;
-    user_id: number;
+    user_id?: number;
 };
 
 export type Order_products = {
-    id: number;
+    id?: number;
     quantity: number;
     order_id: number;
     product_id: number;

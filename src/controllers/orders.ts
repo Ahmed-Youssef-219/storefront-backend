@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import OrderSchema from '../models/orders';
+import { Order } from '../types/types';
 
 const OrderSc = new OrderSchema();
 /* --------------------------------------------------------- get current orders by user --------------------------------------- */
@@ -18,7 +19,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
 /* --------------------------------------------------------- create an order --------------------------------------------------- */
 export const createOrder = async (req: Request, res: Response) => {
     try {
-        const orderObj = req.body;
+        const orderObj:Order = req.body;
         const createdOrder = await OrderSc.create(orderObj);
         res.json({ createdOrder });
     } catch (error) {

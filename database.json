@@ -1,16 +1,17 @@
 {
-    "dev": {
-      "driver": "pg",
-      "host": "localhost",
-      "database": "e-commerce",
-      "user": "postgres",
-      "password": "123456"
-    },
-    "test": {
-      "driver": "pg",
-      "host": "localhost",
-      "database": "commerce_test",
-      "user": "postgres",
-      "password": "123456"
-    }
+  "defaultEnv": {"ENV": "NODE_ENV"},
+  "dev": {
+    "driver": "pg",
+    "host": { "ENV": "DB_SERVER_HOST" },
+    "database": { "ENV": "DB_NAME_DEV" },
+    "user": { "ENV": "DB_SERVER_USER" },
+    "password": { "ENV": "DB_SERVER_PASSWORD" }
+  },
+  "test": {
+    "driver": "pg",
+    "host": { "ENV": "DB_SERVER_HOST" },
+    "database": { "ENV": "DB_NAME_TEST" },
+    "user": { "ENV": "DB_SERVER_USER" },
+    "password": { "ENV": "DB_SERVER_PASSWORD" }
+  }
 }

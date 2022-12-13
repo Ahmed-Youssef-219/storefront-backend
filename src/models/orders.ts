@@ -1,5 +1,5 @@
 import { Order, Order_products } from '../types/types';
-import {dbServer} from '../database';
+import dbServer from '../database';
 
 export default class OrderSchema {
     /* -------------------------------------------- get current orders by users -------------------------------------------- */
@@ -32,6 +32,7 @@ export default class OrderSchema {
             );
         }
     }
+    
     /* -------------------------------------------- delete an order -------------------------------------------- */
     async delete(id: number): Promise<Order> {
         try {
@@ -76,7 +77,6 @@ export default class OrderSchema {
             const sql = `SELECT * FROM order_products WHERE order_id=$1`;
             const result = await connection.query(sql, [orderId]);
             connection.release();
-            console.log(result.rows);
             return result.rows;
         } catch (error) {
             throw new Error(

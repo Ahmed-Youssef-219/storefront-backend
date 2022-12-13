@@ -11,6 +11,12 @@
     "jasmine-ts": "jasmine-ts",
     "test": "npm run build && npm run jasmine",
     "test_1": "npm run jasmine-ts",
+    "createDB_test": "db-migrate db:create commerce_test",
+    "deleteDB_test": "db-migrate db:drop commerce_test",
+    "createDB": "db-migrate db:create e-commerce",
+    "deleteDB": "db-migrate db:drop e-commerce",
+    "realTest": "npm run createDB_test&&set NODE_ENV=test&&db-migrate up:all -e test&&jasmine-ts &&set NODE_ENV=dev&&npm run deleteDB_test",
+    "finalTest": "set NODE_ENV=test&&db-migrate up --config database.json -e test&& jasmine-ts && db-migrate down",
     "start": "npm run build && node build/server",
     "nodemon": "nodemon src/server.ts",
     "dev-server": "tsc-watch --noClear -p tsconfig.json --onSuccess \"node ./build/server.js\""
@@ -48,6 +54,7 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.8.0",
     "supertest": "^6.3.3",
+    "token-types": "^5.0.1",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",
     "typescript": "~4.9.3"
