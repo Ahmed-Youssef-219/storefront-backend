@@ -2,6 +2,7 @@
 building e-commerce api
 
 ==> make sure to install the package in package.json :-
+
     --> $ npm intall 
 
 ==> my environment variables are as following :- 
