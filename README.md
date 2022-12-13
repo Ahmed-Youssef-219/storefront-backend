@@ -6,6 +6,7 @@ building e-commerce api
     --> $ npm intall 
 
 ==> my environment variables are as following :- 
+
     - PORT=3000
     - DB_SERVER_HOST=localhost
     - DB_NAME_DEV=e-commerce
